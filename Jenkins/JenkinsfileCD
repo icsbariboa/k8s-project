@@ -2,14 +2,10 @@ properties([githubProjectProperty(displayName: '', projectUrlStr: 'https://githu
 node("prod"){
     stages {
         stage("Run Producer") {
-            steps {
                 bat "helm upgrade --install producer https://github.com/icsbariboa/k8s-project/tree/master/Helm/Producer"
-            }
         }
         stage("Run Consumer") {
-            steps {
                 bat "helm upgrade --install consumer https://github.com/icsbariboa/k8s-project/tree/master/Helm/Consumer"
-            }
         }
     }
 }
