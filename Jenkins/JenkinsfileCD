@@ -1,14 +1,17 @@
 properties([githubProjectProperty(displayName: '', projectUrlStr: 'https://github.com/icsbariboa/k8s-project'), pipelineTriggers([upstream('k8s-CI')])])
 pipeline {
-    agent {
-        kubernetes {
-            yamlFile 'Kubernetes/Consumer.yaml'
-            yamlFile 'Kubernetes/Producer.yaml'
-        }
-    }
+    agent prod
+
     stages {
         stage("Run Producer") {
             steps {
-                
-
-
+                bat "helm upgrade --install producer https://github.com/icsbariboa/k8s-project/tree/master/Helm/Producer"
+            }
+        }
+        stage("Run Consumer") {
+            steps {
+                bat "helm upgrade --install consumer https://github.com/icsbariboa/k8s-project/tree/master/Helm/Consumer"
+            }
+        }
+    }
+}
