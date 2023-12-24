@@ -8,6 +8,6 @@ node("prod") {
             bat "helm upgrade --install https://github.com/icsbariboa/k8s-project/blob/master/Helm/Producer-0.1.0.tgz"
         }
         stage("Run Consumer") {
-            bat "helm upgrade --install https://github.com/icsbariboa/k8s-project/blob/master/Helm/Producer-0.1.0.tgz"
+            bat "helm upgrade --install https://github.com/icsbariboa/k8s-project/blob/master/Helm/Consumer-0.1.0.tgz"
         }
 }
