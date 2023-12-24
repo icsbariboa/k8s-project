@@ -1,7 +1,5 @@
 properties([githubProjectProperty(displayName: '', projectUrlStr: 'https://github.com/icsbariboa/k8s-project'), pipelineTriggers([upstream('k8s-CI')])])
-pipeline {
-    agent prod
-
+node("prod"){
     stages {
         stage("Run Producer") {
             steps {
