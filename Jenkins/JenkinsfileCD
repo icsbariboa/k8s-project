@@ -4,9 +4,9 @@ node("prod") {
             bat "helm repo add k8s https://github.com/icsbariboa/k8s-project/tree/master/Helm"
         }
         stage("Run Producer") {
-                bat "helm upgrade --install producer https://github.com/icsbariboa/k8s-project/tree/master/Helm/Producer"
+            bat "helm upgrade --install producer https://github.com/icsbariboa/k8s-project/tree/master/Helm/Producer"
         }
         stage("Run Consumer") {
-                bat "helm upgrade --install consumer https://github.com/icsbariboa/k8s-project/tree/master/Helm/Consumer"
+            bat "helm upgrade --install consumer https://github.com/icsbariboa/k8s-project/tree/master/Helm/Consumer"
         }
-    }
+}
