@@ -1,7 +1,7 @@
 properties([githubProjectProperty(displayName: '', projectUrlStr: 'https://github.com/icsbariboa/k8s-project'), pipelineTriggers([upstream('k8s-CI')])])
 node("prod") {
         stage("Helm Repository") {
-            bat "helm repo add k8s https://github.com/icsbariboa/k8s-project/"
+            bat "helm repo add k8s https://github.com/icsbariboa/k8s-project/Helm"
         }
         stage("Run Producer") {
                 bat "helm upgrade --install producer https://github.com/icsbariboa/k8s-project/tree/master/Helm/Producer"
