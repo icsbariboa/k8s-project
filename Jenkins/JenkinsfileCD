@@ -1,0 +1,14 @@
+properties([githubProjectProperty(displayName: '', projectUrlStr: 'https://github.com/icsbariboa/k8s-project'), pipelineTriggers([upstream('k8s-CI')])])
+pipeline {
+    agent {
+        kubernetes {
+            yamlFile 'Kubernetes/Consumer.yaml'
+            yamlFile 'Kubernetes/Producer.yaml'
+        }
+    }
+    stages {
+        stage("Run Producer") {
+            steps {
+                
+
+
