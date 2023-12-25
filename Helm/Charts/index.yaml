@@ -3,9 +3,9 @@ entries:
   consumer:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-12-25T12:12:29.551403+02:00"
+    created: "2023-12-25T12:30:59.7262773+02:00"
     description: A Helm chart for Kubernetes
-    digest: 8e2186af44bb29a436bdbee6638d82ebfe35620a1b39ae653b4def70fdc172e7
+    digest: 356943d4d95d059a0868b55acb72aab33ee44eaeeae03e433d5f1338733976b5
     name: consumer
     type: application
     urls:
@@ -14,12 +14,12 @@ entries:
   producer:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-12-25T12:12:29.5524568+02:00"
+    created: "2023-12-25T12:30:59.7273508+02:00"
     description: A Helm chart for Kubernetes
-    digest: ee06f6d4eafcbddbcf4bebfdcb263add8f36ae2612a4ee5b4ddf0e25e7e0dc2d
+    digest: dedbfd4e87437202a47f89aba560d91a522420d03e0fe1505b32a9e1e38b98a7
     name: producer
     type: application
     urls:
     - https://raw.githubusercontent.com/icsbariboa/k8s-project/master/Helm/Charts/producer-0.1.0.tgz
     version: 0.1.0
-generated: "2023-12-25T12:12:29.5503025+02:00"
+generated: "2023-12-25T12:30:59.7256973+02:00"
