@@ -9,7 +9,7 @@ entries:
     name: Consumer
     type: application
     urls:
-    - https://raw.githubusercontent.com/icsbariboa/k8s-project/master/Helm/Consumer-0.1.0.tgz
+    - https://raw.githubusercontent.com/icsbariboa/k8s-project/master/Helm/Charts/Consumer-0.1.0.tgz
     version: 0.1.0
   Producer:
   - apiVersion: v2
@@ -20,6 +20,6 @@ entries:
     name: Producer
     type: application
     urls:
-    - https://raw.githubusercontent.com/icsbariboa/k8s-project/master/Helm/Producer-0.1.0.tgz
+    - https://raw.githubusercontent.com/icsbariboa/k8s-project/master/Helm/Charts/Producer-0.1.0.tgz
     version: 0.1.0
 generated: "2023-12-25T10:40:07.3760557+02:00"
