@@ -5,9 +5,9 @@ node("prod") {
             bat "helm repo update"
         }
         stage("Run Producer") {
-            bat "helm upgrade producer --install k8s-repo/Producer"
+            bat "helm upgrade producer --install k8s-repo/producer"
         }
         stage("Run Consumer") {
-            bat "helm upgrade consumer --install k8s-repo/Consumer"
+            bat "helm upgrade consumer --install k8s-repo/consumer"
         }
 }
