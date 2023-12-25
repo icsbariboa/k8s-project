@@ -39,9 +39,9 @@ spec:
               protocol: TCP
           env:
             - name: RABBITMQ_HOST
-              value: { { .Values.rabbitmq.host } }
+              value: {{ .Values.rabbitmq.host }}
             - name: RABBITMQ_PORT
-              value: { { .Values.rabbitmq.port | quote } }
+              value: {{ .Values.rabbitmq.port | quote }}
             - name: RABBITMQ_EXCHANGE
               value: {{ .Values.rabbitmq.exchange}}
             - name: MESSAGE_COUNT
