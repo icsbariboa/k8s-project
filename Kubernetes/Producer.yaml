@@ -23,7 +23,7 @@ spec:
                 memory: 100Mi
 ---
 apiVersion: v1
-kind: service
+kind: Service
 metadata:
   name: producer-service
   labels:
