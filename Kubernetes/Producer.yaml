@@ -10,16 +10,17 @@ spec:
     matchLabels:
       app: producer
   template:
-      metadata:
-        labels:
-          app: producer
-container:
-  - name: producer
-    image: icsbariboa/producer
-    resources:
-      requests:
-        cpu: 100m
-        memory: 100Mi
+    metadata:
+      labels:
+        app: producer
+    spec:
+      containers:
+      - name: producer
+        image: icsbariboa/producer
+        resources:
+        requests:
+          cpu: 100m
+          memory: 100Mi
 ---
 apiVersion: v1
 kind: Service
