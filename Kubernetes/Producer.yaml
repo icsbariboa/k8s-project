@@ -13,14 +13,14 @@ spec:
       metadata:
         labels:
           app: producer
-      spec:
-        container:
-          - name: producer
-            image: icsbariboa/producer
-            resources:
-              requests:
-                cpu: 100m
-                memory: 100Mi
+  spec:
+    container:
+      - name: producer
+        image: icsbariboa/producer
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
 ---
 apiVersion: v1
 kind: Service
