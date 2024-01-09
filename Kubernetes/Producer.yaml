@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ProducerDeployment
+  name: producer-deployment
   labels:
     app: producer
 spec:
@@ -25,7 +25,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ProducerService
+  name: producer-service
   labels:
     app: producer
 spec:
@@ -40,7 +40,7 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: ProducerPod
+  name: producer-pod
   labels:
     app: producer
 spec:
