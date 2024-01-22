@@ -3,17 +3,17 @@ replicaCount: 1
 image:
   repository: nginx
   pullPolicy: IfNotPresent
-  tag: ""
+  tag:
 
 imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
+nameOverride:
+fullnameOverride:
 
 serviceAccount:
   create: true
   automount: true
   annotations: {}
-  name: ""
+  name:
 
 podAnnotations: {}
 podLabels: {}
@@ -28,7 +28,7 @@ service:
 
 ingress:
   enabled: false
-  className: ""
+  className:
   annotations: {}
   hosts:
     - host: chart-example.local

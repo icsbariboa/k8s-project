@@ -6,13 +6,13 @@ image:
   tag: "latest"
 
 imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
+nameOverride:
+fullnameOverride:
 
 serviceAccount:
   create: true
   annotations: {}
-  name: ""
+  name:
 
 podAnnotations: {}
 
