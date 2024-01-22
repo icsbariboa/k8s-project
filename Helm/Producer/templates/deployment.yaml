@@ -1,14 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: producer
+  name: {{ include "producer.fullname" . }}
   labels:
+    {{- include "producer.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
+      {{- include "producer.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -16,12 +18,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
+        {{- include "producer.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName:
+      serviceAccountName: {{ include "producer.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -36,13 +39,13 @@ spec:
               protocol: TCP
           env:
             - name: RABBITMQ_HOST
-              value: {{ .Values.rabbitmq.host }}
+              value: "{{ .Values.rabbitmq.host }}"
             - name: RABBITMQ_PORT
-              value: {{ .Values.rabbitmq.port }}
+              value: "{{ .Values.rabbitmq.port }}"
             - name: RABBITMQ_EXCHANGE
-              value: {{ .Values.rabbitmq.exchange}}
+              value: "{{ .Values.rabbitmq.exchange}}"
             - name: MESSAGE_COUNT
-              value: {{ .Values.messageCount }}
+              value: "{{ .Values.messageCount }}"
           command: [ "/bin/sh", "-c" ]
           args:
             - |
@@ -52,7 +55,7 @@ spec:
                 else
                   echo "Hello, this is a default message!" | amqp-publish -u amqp://{{ .Values.rabbitmq.host }}:{{ .Values.rabbitmq.port }} -e {{ .Values.rabbitmq.exchange }} -r default
                 fi
-              done
+              done    
           livenessProbe:
             httpGet:
               path: /
