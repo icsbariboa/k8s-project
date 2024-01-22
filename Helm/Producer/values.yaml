@@ -24,7 +24,7 @@ service:
   type: ClusterIP
   port: 80
 
-customMessage: ""
+customMessage:
 messageCount: 30
 
 rabbitmq:
@@ -34,7 +34,7 @@ rabbitmq:
 
 ingress:
   enabled: false
-  className: ""
+  className:
   annotations: {}
   hosts:
     - host: chart-example.local
