@@ -4,23 +4,23 @@ metadata:
   name: producer
   labels:
 spec:
-#  {{- if not .Values.autoscaling.enabled }}
-#  replicas: {{ .Values.replicaCount }}
-#  {{- end }}
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
   selector:
     matchLabels:
   template:
     metadata:
-#      {{- with .Values.podAnnotations }}
-#      annotations:
-#        {{- toYaml . | nindent 8 }}
-#      {{- end }}
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       labels:
     spec:
-#      {{- with .Values.imagePullSecrets }}
-#      imagePullSecrets:
-#        {{- toYaml . | nindent 8 }}
-#      {{- end }}
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       serviceAccountName:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
@@ -35,24 +35,24 @@ spec:
               containerPort: {{ .Values.service.port }}
               protocol: TCP
           env:
-#            - name: RABBITMQ_HOST
-#              value: {{ .Values.rabbitmq.host }}
-#            - name: RABBITMQ_PORT
-#              value: {{ .Values.rabbitmq.port }}
-#            - name: RABBITMQ_EXCHANGE
-#              value: {{ .Values.rabbitmq.exchange}}
-#            - name: MESSAGE_COUNT
-#              value: {{ .Values.messageCount }}
-#          command: [ "/bin/sh", "-c" ]
-#          args:
-#            - |
-#              for ((i=1; i <= {{ .Values.messageCount }}; i++)); do
-#                if [ -n "{{ .Values.customMessage }}" ]; then
-#                  echo "{{ .Values.customMessage }}" | amqp-publish -u amqp://{{ .Values.rabbitmq.host }}:{{ .Values.rabbitmq.port }} -e {{ .Values.rabbitmq.exchange }} -r custom
-#                else
-#                  echo "Hello, this is a default message!" | amqp-publish -u amqp://{{ .Values.rabbitmq.host }}:{{ .Values.rabbitmq.port }} -e {{ .Values.rabbitmq.exchange }} -r default
-#                fi
-#              done
+            - name: RABBITMQ_HOST
+              value: {{ .Values.rabbitmq.host }}
+            - name: RABBITMQ_PORT
+              value: {{ .Values.rabbitmq.port }}
+            - name: RABBITMQ_EXCHANGE
+              value: {{ .Values.rabbitmq.exchange}}
+            - name: MESSAGE_COUNT
+              value: {{ .Values.messageCount }}
+          command: [ "/bin/sh", "-c" ]
+          args:
+            - |
+              for ((i=1; i <= {{ .Values.messageCount }}; i++)); do
+                if [ -n "{{ .Values.customMessage }}" ]; then
+                  echo "{{ .Values.customMessage }}" | amqp-publish -u amqp://{{ .Values.rabbitmq.host }}:{{ .Values.rabbitmq.port }} -e {{ .Values.rabbitmq.exchange }} -r custom
+                else
+                  echo "Hello, this is a default message!" | amqp-publish -u amqp://{{ .Values.rabbitmq.host }}:{{ .Values.rabbitmq.port }} -e {{ .Values.rabbitmq.exchange }} -r default
+                fi
+              done
           livenessProbe:
             httpGet:
               path: /
@@ -63,15 +63,15 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-#      {{- with .Values.nodeSelector }}
-#      nodeSelector:
-#        {{- toYaml . | nindent 8 }}
-#      {{- end }}
-#      {{- with .Values.affinity }}
-#      affinity:
-#        {{- toYaml . | nindent 8 }}
-#      {{- end }}
-#      {{- with .Values.tolerations }}
-#      tolerations:
-#        {{- toYaml . | nindent 8 }}
-#      {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
