@@ -20,5 +20,5 @@ spec:
                 name: producer
                 port:
                   number: {{ $svcPort }}
-              serviceName: {{ $fullName }}
+              serviceName: producer
               servicePort: {{ $svcPort }}
