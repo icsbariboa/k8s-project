@@ -35,24 +35,24 @@ spec:
               containerPort: {{ .Values.service.port }}
               protocol: TCP
           env:
-            - name: RABBITMQ_HOST
-              value: {{ .Values.rabbitmq.host }}
-            - name: RABBITMQ_PORT
-              value: {{ .Values.rabbitmq.port }}
-            - name: RABBITMQ_EXCHANGE
-              value: {{ .Values.rabbitmq.exchange}}
-            - name: MESSAGE_COUNT
-              value: {{ .Values.messageCount }}
-          command: [ "/bin/sh", "-c" ]
-          args:
-            - |
-              for ((i=1; i <= {{ .Values.messageCount }}; i++)); do
-                if [ -n "{{ .Values.customMessage }}" ]; then
-                  echo "{{ .Values.customMessage }}" | amqp-publish -u amqp://{{ .Values.rabbitmq.host }}:{{ .Values.rabbitmq.port }} -e {{ .Values.rabbitmq.exchange }} -r custom
-                else
-                  echo "Hello, this is a default message!" | amqp-publish -u amqp://{{ .Values.rabbitmq.host }}:{{ .Values.rabbitmq.port }} -e {{ .Values.rabbitmq.exchange }} -r default
-                fi
-              done
+#            - name: RABBITMQ_HOST
+#              value: {{ .Values.rabbitmq.host }}
+#            - name: RABBITMQ_PORT
+#              value: {{ .Values.rabbitmq.port }}
+#            - name: RABBITMQ_EXCHANGE
+#              value: {{ .Values.rabbitmq.exchange}}
+#            - name: MESSAGE_COUNT
+#              value: {{ .Values.messageCount }}
+#          command: [ "/bin/sh", "-c" ]
+#          args:
+#            - |
+#              for ((i=1; i <= {{ .Values.messageCount }}; i++)); do
+#                if [ -n "{{ .Values.customMessage }}" ]; then
+#                  echo "{{ .Values.customMessage }}" | amqp-publish -u amqp://{{ .Values.rabbitmq.host }}:{{ .Values.rabbitmq.port }} -e {{ .Values.rabbitmq.exchange }} -r custom
+#                else
+#                  echo "Hello, this is a default message!" | amqp-publish -u amqp://{{ .Values.rabbitmq.host }}:{{ .Values.rabbitmq.port }} -e {{ .Values.rabbitmq.exchange }} -r default
+#                fi
+#              done
           livenessProbe:
             httpGet:
               path: /
