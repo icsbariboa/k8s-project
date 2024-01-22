@@ -10,5 +10,4 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "producer.fullname" . }}:{{ .Values.service.port }}']
   restartPolicy: Never
